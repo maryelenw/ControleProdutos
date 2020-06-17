@@ -28,24 +28,24 @@ Após a criação, deverá voltar para a tela de loginSistema:
 Após logar, deverá ser apresentado a listagem de produtos
 
 Menu composto por:
-<li>Produtos:
-<li> * Listagem de produtos
-<li> * Relatório
-<li> * Relatório de movimentos
-<li> * Sair
-<li> * Sair do sistema e volta para o login
+<h4/>Produtos:
+<li> Listagem de produtos
+<li> Relatório
+<li> Relatório de movimentos
+<li> Sair
+<li> Sair do sistema e volta para o login
 
 Listagem de produtos, Campos:
 <li> 1. Produtos
-<li>  • Nome do produto
+<li>   Nome do produto
 <li> 2. Imagem do produto
-<li>  • Exibir a imagem do produto
+<li>   Exibir a imagem do produto
 <li> 3. Medida
-<li>  • Medida de quantidade do produto: resma de 100 papel A4, caixa com 20 canetas, etc
+<li>   Medida de quantidade do produto: resma de 100 papel A4, caixa com 20 canetas, etc
 <li> 4. Preço
-<li>  • Valor de cada produto (valor da medida)
+<li>   Valor de cada produto (valor da medida)
 <li> 5. Quantidade disponível
-<li>  • Quantidade em estoque
+<li>   Quantidade em estoque
 <li> 6. Solicitar
 Ação de solicitar o produto
 Ações: Salvar solicitação, cancelar solicitação
