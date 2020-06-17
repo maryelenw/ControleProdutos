@@ -1,0 +1,101 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solicitar produto</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/solicitacao.css" rel="stylesheet">
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--MENU SUPERIOR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <h1 class="page-header">Produtos</h1>
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+<!--                <span class="icon-bar"></span>-->
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+<!--                <li><a href="/api/produtos">Produtos</a></li>-->
+<!--                <li><a href="/api/relatorio">Relatórios</a></li>-->
+<!--                <li><a href="/logout">Sair</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="main" class="container-fluid">
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+        <ul class="nav navbar-nav navbar-left">
+            <form name="solicitacao" action="#" th:action="@{/api/produto/{id}(id=${produto.getId()})}" th:object="${produto}" method="post">
+                <table >
+                    <tr >
+                        <td>Produto:</td>
+                        <td><input type="text" th:field="*{nome}" th:value="${produto.getNome()}" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td>Quantidade Disponível:</td>
+                        <td><input name="quantidadeDisponivel" type="text" th:field="*{quantidadeDisponivel}" th:value="${produto.getQuantidadeDisponivel()}" disabled></td>
+                    </tr>
+
+                    <tr>
+                        <td>Quantidade Desejada:</td>
+                        <td><input name="quantidadeDesejada" type="text" placeholder="Digite a quantidade" class="form-control" id="quantidadeDesejada" required></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="submit" value="Solicitar" onclick="return validar()"></td>
+                    </tr>
+
+                </table>
+            </form>
+            <td><input type="submit" value="Voltar" onclick="return voltar()"></td>
+        </ul>
+    </div>
+</div>
+<!--FIM MENU SUPERIOR-->
+</body>
+</html>
+
+<script>
+    function validar() {
+        var quantidadeDisponivel = solicitacao.quantidadeDisponivel.value;
+        var quantidadeDesejada = solicitacao.quantidadeDesejada.value;
+        console.log(quantidadeDesejada);
+        if(quantidadeDesejada == 0 || quantidadeDesejada > quantidadeDisponivel)
+        {
+            alert("Quantidade desejada inválida!");
+            formuser.quantidadeDesejada.focus();
+            event.preventDefault();
+        }
+        else{
+            alert("Solicitação realizada!");
+            console.log(quantidadeDesejada);
+
+        }
+    }
+    
+    function voltar() {
+        document.location = 'http://localhost:8080/api/produtos';
+    }
+
+</script>

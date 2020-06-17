@@ -1,0 +1,133 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="container">
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="loginUsuario" class="form" th:action="@{/login}" method="post">
+                            <h3 class="text-center text-info">Login da aplicação</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Login </label><br>
+                                <input type="text" name="account" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Senha </label><br>
+                                <input type="text" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+<!--                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>-->
+                                <br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Logar">
+                            </div>
+
+                        </form>
+                        <div class="form-group">
+                        <button class="btn btn-info btn-md" onclick="return limpar();" id="btnLimpar" type="submit">Limpar</button>
+                        </div>
+                        <div id="register-link" class="text-left">
+                            <a href="/cadastroUsuario" class="text-info">Cadastrar novo usuário</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<!--FALTA AJUSTAR LOGIN-->
+<script>
+    function limpar()
+    {
+        document.getElementById('username').value=''
+        document.getElementById('password').value=''
+    }
+
+
+        // $('#btnProdutos').on("click", function (e) {
+        //     $.ajax({
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         type: 'GET',
+        //         data: '',
+        //         url: 'http://localhost:8080/api/produtos',
+        //         processData: false,
+        //         success: function (jsonObject) {
+        //             document.location = 'http://localhost:8080/listagemProdutos';
+        //         },
+        //         error: function (data) {
+        //             alert('Não foi possível carregar listagem de produtos');
+        //         }
+        //     });
+        //     return false;
+        // });
+
+        $('#btnLogar').on("click", function (e) {
+            $.ajax({
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                type: 'POST',
+                url: 'http://localhost:8080/login',
+                data: JSON.stringify({
+                    "login": $("#login").val(), "senha": $("#senha").val()
+                }),
+                processData: false,
+                success: function (jsonObject) {
+                    document.location = 'http://localhost:8080/';
+                },
+                error: function (data) {
+                    alert('Não foi possível logar, contate o Lessa :)');
+                }
+            });
+            return false;
+        });
+
+    // $(document).ready(function() {
+    //
+    //     $('##btnLogar').on('click', function(e) {
+    //
+    //         e.preventDefault();
+    //
+    //         var login = $('#login').val();
+    //         var senha = $('#senha').val();;
+    //         alert(login);
+    //         alert(senha)
+    //         $.ajax({
+    //             url: 'http://localhost:8080/login',
+    //             async: true,
+    //             cache: false,
+    //             type: 'POST',
+    //             data: {"usuario.login":$("#login").val(), "usuario.senha":$("#senha").val(),
+    //
+    //
+    //                 dataType: 'text',
+    //
+    //             }
+    //
+    //         });
+    //         alert("oi");
+    //
+    //     });
+    //
+    // });
+</script>

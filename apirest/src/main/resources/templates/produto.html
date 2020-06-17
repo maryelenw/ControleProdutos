@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Informação Produto</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="@{/css/index.css}" rel="stylesheet">-->
+    <link href="bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/static/css/cadUsuario.css" rel="stylesheet">
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script src="/static/getrequest.js"></script>-->
+<!--<script src="/static/postrequest.js"></script>-->
+<!--<script src="/static/accordion.js"></script>-->
+<script src="bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
+<script src="bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+
+<!--MENU SUPERIOR-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <h1 class="page-header">Produtos</h1>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#">Listagem Produtos</a></li>
+                <li><a href="/api/relatorio">Relatórios</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--FIM MENU SUPERIOR-->
+
+<div id="main" class="container-fluid">
+    <!--cabeçalho tabela-->
+    <table class="table ls-table" id="infProduto">
+        <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Medida</th>
+            <th>Quantidade</th>
+        </tr>
+        </thead>
+    </table>
+    <!--    fim cabeçalho da tabela-->
+
+    <!--    conteúdo da tabela-->
+    <table class="table ls-table">
+        <thead>
+        <tr>
+            <th>Nome Produto</th>
+            <th>Medida</th>
+            <th>Preço</th>
+            <th>Quantidade Disponível</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Buscar do BD</td>
+            <td>Buscar do BD</td>
+            <td>Buscar do BD</td>
+            <td>Buscar do BD</td>
+        </tr>
+        <!--        <br>-->
+
+        </tbody>
+    </table>
+    <!--fim do conteúdo da tabela-->
+
+</div>
+</body>
+</html>
+</html>

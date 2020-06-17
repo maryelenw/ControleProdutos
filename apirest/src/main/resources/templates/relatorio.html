@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Relatórios</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="@{/css/index.css}" rel="stylesheet">
+    <link href="bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.css" rel="stylesheet">
+    <link href="/static/css/cadUsuario.css" rel="stylesheet">
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js"></script>
+<script src="bootstrap-datepicker-1.9.0-dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <h1 class="page-header">Relatórios</h1>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/api/produtos">Produtos</a></li>
+                <li><a href="/api/relatorio">Relatórios</a></li>
+                <li><a href="/logout">Sair</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="main" class="container-fluid">
+    <table class="table ls-table">
+        <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Data da solicitação</th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="solicitacao : ${solicitacoes}">
+            <td th:text="${solicitacao.getUsuario().getNome()}"></td>
+            <td id="dtSolicitacao" th:text="${solicitacao.getDtSolicitacao()}"></td>
+            <td th:text="${solicitacao.getProduto().getNome()}"></td>
+            <td th:text="${solicitacao.getQuantidadeSolicitada()}"></td>
+            <td class="valor" th:text="${solicitacao.getProduto().getPreco() * solicitacao.getQuantidadeSolicitada()}"></td>
+        </tr>
+        <tr>
+            <td>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-addon">Valor total</span>
+                        <input id="valorTotal" name="valorTotal" disabled></input>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+<script>
+    $(function(){
+        var valor = 0;
+        var valorTotal = document.getElementById('valorTotal');
+        $( ".valor" ).each(function() {
+            valor += parseInt($( this ).text());
+            console.log(valor);
+        });
+        console.log(valor);
+        valorTotal.value = valor;
+    });
+</script>
+</html>
