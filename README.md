@@ -28,7 +28,7 @@ Após a criação, deverá voltar para a tela de loginSistema:
 Após logar, deverá ser apresentado a listagem de produtos
 
 Menu composto por:
-<h4/>Produtos:
+<h4>Produtos:</h4>
 <li> Listagem de produtos
 <li> Relatório
 <li> Relatório de movimentos
